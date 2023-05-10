@@ -2,8 +2,6 @@ package POO.DisciplinaV2;
 
 import java.util.Scanner;
 
-import POO.Disciplina.Disciplina;
-
 public class Principal {
 
 	public static void main(String[] args) {
@@ -12,11 +10,13 @@ public class Principal {
 		Aluno aluno = new Aluno();
 		Disciplina disciplina = new Disciplina();	
 		
-		System.out.println(""); //faculdade, nome idade
-		System.out.println("");
-		System.out.println("");
-		
-		System.out.println("Quantas disciplinas ir· informar? ");
+		System.out.println("Qual o nome do aluno? "); //faculdade, nome idade
+		aluno.setNome(sc.next());
+		System.out.println("Qual a faculdade do aluno? ");
+		aluno.setFaculdade(sc.next());
+		System.out.println("Qual a idade do aluno? ");
+		aluno.setIdade(sc.nextInt());
+		System.out.println("Quantas disciplinas ir√° informar? ");
 		int qtdDisciplinas = sc.nextInt();
 		
 		for(int i = 1; i <= qtdDisciplinas; i++) {
