@@ -3,8 +3,6 @@ package POO.DisciplinaV2;
 import java.util.ArrayList;
 import java.util.List;
 
-import POO.Disciplina.Disciplina;
-
 public class Aluno {
 
 	private String nome;
@@ -47,7 +45,7 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno: " + nome + "Média: " + media() + "Situação:" + situacaoAluno() + "]";
+		return "Aluno: " + nome + "| MÃ©dia: " + media() + "| SituaÃ§Ã£o: " + situacaoAluno();
 	}
 
 	public double media() {
