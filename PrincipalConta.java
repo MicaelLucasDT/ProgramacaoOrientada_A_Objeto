@@ -5,60 +5,47 @@ import java.util.Scanner;
 public class PrincipalConta {
 
 	public static void main(String[] args) {
-
-		
-		
 		
 		Scanner sc = new Scanner(System.in);
-		Conta conta = new Conta();
+		Conta conta;
+		
+		int idade;
 		
 		System.out.println("Insira o número da conta: ");
-		conta.setNumero(sc.nextInt()) ;
+		int numero = sc.nextInt();
 
-		System.out.println("Insira seu nome: ");
-		conta.setNome(sc.next());
+		System.out.println("Insira seu 1° nome: ");
+		String nome = sc.next();
 		
-		System.out.println("Insira seu sobrenome: ");
-		conta.setSobreNome(sc.next());
-	
-		String continua;
 		
 		do{	
 		
 		System.out.println("Qual sua idade? ");
-		conta.setIdade(sc.nextInt());
+		idade = sc.nextInt();
 		
-			if(conta.getIdade() < 18) {
+			if(idade < 18) {
 				
 				System.out.println("Perdão, mas você é novo demais para criar uma conta bancária... É necessário ter 18 anos ou mais!");
 			}
-			}while(conta.getIdade() < 18);
-			
+			}while(idade < 18);
 		
 		
 		System.out.println("Quer realizar um depósito inicial? S/N ");
-		continua = sc.next().toUpperCase();
+		char continua = sc.next().toLowerCase().charAt(0);  //O "0" é para que o programa leia apenas a primeira posição da resposta do usuário (não é case sensitive!)
 		
-		switch (continua) {
-		case "S":
+		if( continua == 's' ) {
 			System.out.println("==========================================================");
 			System.out.println("Qual o valor do depósito? ");
-			double saldo = sc.nextDouble();
-			conta.setSaldo(saldo);
-			System.out.println("Informações: ");
-			System.out.println(conta);
+			double depositoInicial = sc.nextDouble();
+			conta = new Conta(nome, numero, depositoInicial);
 			
-			break;
-
-		case "N": 
-			System.out.println("==========================================================");
-			System.out.println("Informações: ");
-			System.out.println(conta);
-			
-		default:
-			break;
+		}else {
+			conta = new Conta(nome, numero, idade);
 		}
-			
+		
+		System.out.println("Informações: ");
+		System.out.println(conta);
+		
 		System.out.println("==========================================================");
 		System.out.println("Quantas movimentações a mais você deseja realizar na conta?");
 		int mov = sc.nextInt();
@@ -70,18 +57,16 @@ public class PrincipalConta {
 			
 			if(tipo == 1) {
 				System.out.println("Qual o valor do depósito? ");
-				 double depos = sc.nextDouble();
-				 double upDep = depos + conta.deposito();
-				 conta.setSaldo(upDep);
+				 conta.deposito(sc.nextDouble());
+				
 				 System.out.println("informações da conta: ");
 				 System.out.println(conta);
 				 
 			}else {
 				
 				System.out.println("Qual o valor do saque? ");
-				double saque = sc.nextDouble();
-				double upSaque = conta.deposito() - saque - 5;
-				conta.setSaldo(upSaque);
+				conta.saque(sc.nextDouble());
+				
 				System.out.println("informações da conta: ");
 				System.out.println(conta);
 				
