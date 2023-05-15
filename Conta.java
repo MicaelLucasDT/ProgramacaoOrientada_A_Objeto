@@ -4,20 +4,49 @@ public class Conta {
 
 	
 	private String nome;
-	private String sobreNome;
 	private int idade;
 	private int numero;
-	private double saldo;
-	
+	private double saldo = 0.00;
 	
 	
 																																					
+	
+
+
+
+	public Conta(String nome, int numero, int idade) {
+
+		this.nome = nome;
+		this.numero = numero;
+		this.numero = idade;
+	}
+
+
+
+
+
+
+
+	public Conta(String nome, int numero, double depositoInicial) {
+		this.nome = nome;
+		this.numero = numero;
+		deposito(depositoInicial);
+	}
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "Nome do titular: " + nome + " " + sobreNome + "| Idade: " + idade 	+ " anos| Número da conta: " + numero + " | Saldo: R$" + saldo;
+		return "Nome do titular: " + nome + " " + "| Idade: " + idade 	+ " anos| Número da conta: " + numero + " | Saldo: R$" + saldo;
 	}
 	
 	
+
+
 
 	public String getNome() {
 		return nome;
@@ -27,53 +56,35 @@ public class Conta {
 		this.nome = nome;
 	}
 
-	public String getSobreNome() {
-		return sobreNome;
-	}
-
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
-	}
-
 	public int getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
+	
 
 	public int getNumero() {
 		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 
 	public double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
 
-	public double deposito() {
-		
-		double saldoUP = saldo;
-		
+	public void deposito(double valor) {
+		saldo += valor;
 		
 		
 		
-		return saldoUP;
 	}
 	
-	public double saque() {
+	public void saque(double valor) {
+		saldo -= valor + 5.0;
 		
-		double saldoUP = saldo;
 		
-		return saldoUP;
+		
 	}
+	
+	
 	
 }
